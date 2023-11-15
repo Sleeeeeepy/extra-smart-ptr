@@ -2,7 +2,7 @@
 #include "sptr.h"
 
 void func(int *p) {
-    smart int* p_ref = ref(p);
+    smart int *p_ref = ref(p);
     printf("p in func(): %d\n", *p_ref);
 }
 

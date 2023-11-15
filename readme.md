@@ -10,7 +10,7 @@ GCC의 cleanup attribute를 이용한 간단한 스마트 포인터 구현 예�
 #include "sptr.h"
 
 void func(int *p) {
-    smart int* p_ref = ref(p);
+    smart int *p_ref = ref(p);
     printf("p in func(): %d\n", *p_ref);
 }
 

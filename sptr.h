@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#define smart __attribute__ ((__cleanup__(clean_up)))
+#define smart __attribute__ ((__cleanup__(sptr_clean_up__)))
 
 typedef struct mem_node_t {
     void *ptr;

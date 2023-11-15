@@ -1,0 +1,10 @@
+# ignore executables
+*
+!*.*
+!*/
+
+# ignore config
+.vscode/
+
+# ignore object
+*.o

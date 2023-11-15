@@ -61,22 +61,27 @@ void sptr_clean_up__(void *ptr) {
     }
 
     for (ref_node *cursor = ref_list->head; cursor != NULL; cursor = cursor->next) {
-        if (cursor->ptr == *p) {
-            cursor->count -= 1;
-            if (cursor->count == 0) {
-                free(cursor->ptr);
-                if (prev != NULL) {
-                    prev->next = cursor->next;
-                }
-
-                if (ref_list->head == cursor) {
-                    ref_list->head = cursor->next;
-                }
-                free(cursor);
-                break;
-            }
+        if (cursor->ptr != *p) {
+            prev = cursor;
+            continue;
         }
-        prev = cursor;
+
+        cursor->count -= 1;
+        if (cursor->count != 0) {
+            break;
+        }
+        
+        if (prev != NULL) {
+            prev->next = cursor->next;
+        }
+
+        if (ref_list->head == cursor) {
+            ref_list->head = cursor->next;
+        }
+
+        free(cursor->ptr);
+        free(cursor);
+        break;
     }
 
     if (ref_list->head == NULL) {
